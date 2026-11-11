@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Sell
+{% endblock %}
+
+{% block main %}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .sell-container {
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            width: 500px;
+            margin: 50px auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        select, input[type="number"] {
+            width: 100%;
+            padding: 8px 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <div class="sell-container">
+        <h1>Sell Stock</h1>
+        <form action="/sell" method="post">
+            <label for="symbol">Select stock:</label>
+            <select name="symbol" id="symbol" required>
+                <option disabled selected value="">Stocks</option>
+                {% for stock in portfolio %}
+                    <option value="{{ stock.symbol }}">{{ stock.symbol }} ({{ stock.shares }} shares)</option>
+                {% endfor %}
+            </select>
+
+            <label for="shares">Shares to sell:</label>
+            <input type="number" name="shares" min="1" required>
+            <input type="submit" value="Sell">
+        </form>
+    </div>
+{% endblock %}

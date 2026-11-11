@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form class="mb-3" action="/register" method="post">
+        <div>
+            <input autocomplete="off" autofocus required class="form-control mx-auto w-auto" name="Username" placeholder="Username" type="text">
+        </div>
+        <p>
+          <div class="mb-3">
+              <input class="form-control mx-auto w-auto" name="Password" placeholder="Set your password" type="password">
+          </div>
+        </p>
+        <div class="mb-3">
+            <input class="form-control mx-auto w-auto" name="Confirmation" placeholder="Confirm your password" type="password">
+        </div>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+{% endblock %}

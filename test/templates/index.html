@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block body %}
+  <h1>Register
+    <form action="/register" method="post">
+      <input name="name" autocomplete="off"  required type="text" placeholder="Name" autofocus>
+  <!--<select name="sport" required>
+        <option disabled selected value="">Sport</option>-->
+        <h5>
+        {% for sport in sports %}
+          <input name="sport" type="radio" value="{{sport}}">{{sport}}
+        {% endfor %}
+        </h5>
+      </select>
+      <button type="submit">Register</button>
+    </form>
+  </h1>
+  <h2>
+    <a href="https://zany-space-adventure-pjp5rqwpw575c7779-5000.app.github.dev/registrants">
+      Check the current list
+    </a>
+  </h2>
+
+{% endblock %}

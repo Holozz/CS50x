@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Log In
+{% endblock %}
+
+{% block main %}
+    <style>
+      .welcome {
+        color: green;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+      }
+      th, td {
+        border: 1px solid #ccc;
+        padding: 8px 12px;
+        max-width: 200px;
+        word-wrap: break-word;
+      }
+      thead {
+        background-color: #f5f5f5;
+      }
+      tr:hover {
+        background-color: #f0f8ff; /* 鼠标悬停高亮 */
+      }
+    </style>
+    <h1 class="welcome">Welcome, {{ rows[0]["username"] }}!</h1>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>symbol</th>
+            <th>company name</th>
+            <th>shares</th>
+            <th>avg price</th>
+            <th>current price</th>
+            <th>total value</th>
+          </tr>
+        </thead>
+        {% for row in rows %}
+          <tbody name="">
+            <tr>
+              <td>{{ row["symbol"] }}</td>
+              <td>{{ row["name"] }}</td>
+              <td>{{ row["shares"] }}</td>
+              <td>{{ row["avg_price"] }}</td>
+              <td>{{ row["price"] }}</td>
+              <td>{{ row["shares"]*row["price"] }}</td>
+            </tr>
+          </tbody>
+        {% endfor %}
+      </table>
+    </div>
+    <div>
+      <table>
+        <thead>
+          <tr>
+            <th>current cash balance</th>
+            <th>grand total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ cash }}</td>
+            <td>{{ cash+grand }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+{% endblock %}
